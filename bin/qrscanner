@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'qrscanner'
+
+if source_file = ARGV.shift
+  QrScanner.decode(File.new(source_file).read)
+else
+  QrScanner.decode(STDIN.read)
+end

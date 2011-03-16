@@ -1,5 +1,6 @@
 CHANGELOG
 Manifest
+README
 Rakefile
 bin/qrscanner
 ext/qrscanner/extconf.rb
