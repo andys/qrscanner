@@ -1,6 +1,7 @@
 CHANGELOG
 Manifest
 Rakefile
+bin/qrscanner
 ext/qrscanner/extconf.rb
 ext/qrscanner/qrscanner.c
 ext/qrscanner/zxing/README
@@ -277,6 +278,8 @@ ext/qrscanner/zxing/scons/scons-local-2.0.0.final.0/SCons/Taskmaster.pyc
 ext/qrscanner/zxing/scons/scons-local-2.0.0.final.0/SCons/Tool/386asm.py
 ext/qrscanner/zxing/scons/scons-local-2.0.0.final.0/SCons/Tool/BitKeeper.py
 ext/qrscanner/zxing/scons/scons-local-2.0.0.final.0/SCons/Tool/BitKeeper.pyc
+ext/qrscanner/zxing/scons/scons-local-2.0.0.final.0/SCons/Tool/CVS.py
+ext/qrscanner/zxing/scons/scons-local-2.0.0.final.0/SCons/Tool/CVS.pyc
 ext/qrscanner/zxing/scons/scons-local-2.0.0.final.0/SCons/Tool/FortranCommon.py
 ext/qrscanner/zxing/scons/scons-local-2.0.0.final.0/SCons/Tool/FortranCommon.pyc
 ext/qrscanner/zxing/scons/scons-local-2.0.0.final.0/SCons/Tool/JavaCommon.py
@@ -472,4 +475,3 @@ ext/qrscanner/zxing/scons/scons-local-2.0.0.final.0/SCons/exitfuncs.py
 ext/qrscanner/zxing/scons/scons-time.py
 ext/qrscanner/zxing/scons/scons.py
 ext/qrscanner/zxing/scons/sconsign.py
-make.sh
