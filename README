@@ -1,0 +1,41 @@
+
+
+QR scanner
+----------
+
+Ruby Gem which wraps ZXing QR decoder library (C++) and ImageMagick
+
+
+
+Usage
+-----
+
+Example:
+
+  require 'qrscanner'
+
+  QrScanner.decode '/path/to/hellworld.png'
+  => "Hello, world"
+
+The parameter accepts any image format that ImageMagick supports, which
+should include PDFs for scanned documents.
+
+Returns nil if it can't find a qr code or other error.
+
+
+Dependencies
+------------
+
+* Python (for ZXing build script)
+* ImageMagick
+* gcc, g++, libstd++
+
+
+
+
+Contact the author
+------------------
+
+Andrew Snow <andrew@modulus.org>
+Andys^ on irc.freenode.net
+@andy_snow on the twitter
