@@ -12,6 +12,8 @@ Usage
 
 Example:
 
+First, gem install 'qrscanner'
+
   require 'qrscanner'
 
   QrScanner.decode '/path/to/hellworld.png'
@@ -27,9 +29,13 @@ Dependencies
 ------------
 
 * Python (for ZXing build script)
-* ImageMagick
+* ImageMagick and libmagick++
 * gcc, g++, libstd++
+* Operating system with a PREFIX of "/usr".
 
+This last one means it really only works on Linux eg. Ubuntu, and not OSX or
+BSD, because the ZXing CPP build script has hard coded paths for include
+files etc.  :-(
 
 
 
