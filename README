@@ -29,7 +29,7 @@ Dependencies
 ------------
 
 * Python (for ZXing build script)
-* ImageMagick and libmagick++
+* ImageMagick: libMagick++, libMagickWand, libMagickCore
 * gcc, g++, libstd++
 * Operating system with a PREFIX of "/usr".
 
