@@ -20,9 +20,10 @@ First, gem install 'qrscanner'
   => "Hello, world"
 
 The parameter accepts any image format that ImageMagick supports, which
-should include PDFs for scanned documents.
+should include PDF for scanned documents as well as PNG/JPG/TIFF/etc.
 
 Returns nil if it can't find a qr code or other error.
+
 
 
 Dependencies

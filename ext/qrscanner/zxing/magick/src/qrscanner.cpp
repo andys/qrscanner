@@ -68,6 +68,7 @@ extern "C" char *decode_qr_image(const char *fname) {
   const char* result_format = "";
 
     Image image;
+    image.density(Geometry(300,300));  // for PDFs or vector input with low, incorrect DPI set eg. some Canon scanners
     try {
       image.read(fname);
     } catch (...) {
@@ -79,10 +80,10 @@ extern "C" char *decode_qr_image(const char *fname) {
   try {
     Ref<MagickBitmapSource> source(new MagickBitmapSource(image));
 
-    binarizer = new HybridBinarizer(source);
-//    binarizer = new GlobalHistogramBinarizer(source);
+//    binarizer = new HybridBinarizer(source);
+    binarizer = new GlobalHistogramBinarizer(source);
 
-    DecodeHints hints(DecodeHints::DEFAULT_HINT);
+    DecodeHints hints(DecodeHints::BARCODEFORMAT_QR_CODE_HINT /*DecodeHints::DEFAULT_HINT*/);
     hints.setTryHarder(tryHarder);
     Ref<BinaryBitmap> binary(new BinaryBitmap(binarizer));
     Ref<Result> result(decode(binary, hints));

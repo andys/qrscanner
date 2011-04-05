@@ -28,7 +28,7 @@ typedef unsigned int DecodeHintType;
 
 class DecodeHints {
 
- private:
+ public:
 
   static const DecodeHintType BARCODEFORMAT_QR_CODE_HINT = 1 << BarcodeFormat_QR_CODE;
   static const DecodeHintType BARCODEFORMAT_DATA_MATRIX_HINT = 1 << BarcodeFormat_DATA_MATRIX;
