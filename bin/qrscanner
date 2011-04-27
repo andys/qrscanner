@@ -2,8 +2,5 @@
 
 require 'qrscanner'
 
-if source_file = ARGV.shift
-  QrScanner.decode(File.new(source_file).read)
-else
-  QrScanner.decode(STDIN.read)
-end
+source_file = ARGV.shift or raise 'Missing argument: path to image'
+puts QrScanner.decode(source_file)
