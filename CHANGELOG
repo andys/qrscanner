@@ -1,4 +1,6 @@
 
+v0.3. Blur image to reduce noise
+
 v0.2. Choose better binarizer, ignore non-QR barcodes, override DPI
 
 v0.1. initial commit

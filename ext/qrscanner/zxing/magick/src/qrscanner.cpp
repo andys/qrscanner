@@ -71,8 +71,12 @@ extern "C" char *decode_qr_image(const char *fname) {
     image.density(Geometry(300,300));  // for PDFs or vector input with low, incorrect DPI set eg. some Canon scanners
     try {
       image.read(fname);
+      image.blur(2, 0.5);
+    } catch (exception& e) {
+      cerr << "exception: ";
+      cerr << string(e.what()) << endl; 
     } catch (...) {
-      cerr << "Unable to open image, ignoring" << endl;
+      cerr << "Unable to open image" << endl;
       return(NULL);
     }
 
@@ -104,8 +108,10 @@ extern "C" char *decode_qr_image(const char *fname) {
     res = -5;
   }
 
-  if(res<0)
+  if(res<0) {
+    cerr << cell_result << endl;
     return(NULL);
+  }
 
   return(strdup(cell_result.c_str()));
 }

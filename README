@@ -12,7 +12,8 @@ Usage
 
 Example:
 
-First, gem install 'qrscanner'
+First, gem install 'qrscanner'.  This also provides you with a command-line
+tool ("qrscanner") for testing.
 
   require 'qrscanner'
 
@@ -22,7 +23,9 @@ First, gem install 'qrscanner'
 The parameter accepts any image format that ImageMagick supports, which
 should include PDF for scanned documents as well as PNG/JPG/TIFF/etc.
 
-Returns nil if it can't find a qr code or other error.
+Returns nil if it can't find a qr code or other error.  It currently prints
+the error to STDERR.
+
 
 
 
@@ -45,4 +48,3 @@ Contact the author
 
 Andrew Snow <andrew@modulus.org>
 Andys^ on irc.freenode.net
-@andy_snow on the twitter
