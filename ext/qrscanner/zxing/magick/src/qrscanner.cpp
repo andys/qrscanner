@@ -18,6 +18,7 @@
  */
 
 #include <iostream>
+#include <cstdio>
 #include <fstream>
 #include <string>
 #include <Magick++.h>
@@ -58,7 +59,7 @@ Ref<Result> decode(Ref<BinaryBitmap> image, DecodeHints hints) {
 }
 
 
-extern "C" char *decode_qr_image(const char *fname) {
+extern "C" char *decode_qr_image(const char *fname, int dpi, int blur) {
 
   string cell_result;
   int res = -1;
@@ -66,19 +67,23 @@ extern "C" char *decode_qr_image(const char *fname) {
   Ref<BitMatrix> matrix(NULL);
   Ref<Binarizer> binarizer(NULL);
   const char* result_format = "";
-
-    Image image;
-    image.density(Geometry(300,300));  // for PDFs or vector input with low, incorrect DPI set eg. some Canon scanners
-    try {
-      image.read(fname);
-      image.blur(2, 0.5);
-    } catch (exception& e) {
-      cerr << "exception: ";
-      cerr << string(e.what()) << endl; 
-    } catch (...) {
-      cerr << "Unable to open image" << endl;
-      return(NULL);
+  
+  Image image;
+  if(dpi) {
+    image.density(Geometry(dpi,dpi));
+  }
+  try {
+    image.read(fname);
+    if(blur) {
+      image.blur(2, ((double)blur)/10.0);
     }
+  } catch (exception& e) {
+    cerr << "exception: ";
+    cerr << string(e.what()) << endl; 
+  } catch (...) {
+    cerr << "Unable to open image" << endl;
+    return(NULL);
+  }
 
 
   try {
@@ -95,8 +100,12 @@ extern "C" char *decode_qr_image(const char *fname) {
     result_format = barcodeFormatNames[result->getBarcodeFormat()];
     res = 0;
   } catch (ReaderException e) {
-    cell_result = "zxing::ReaderException: " + string(e.what());
-    res = -2;
+    if(strlen(e.what())==0) {
+      cell_result = "";
+    } else {
+      cell_result = "zxing::ReaderException: " + string(e.what());
+      res = -2;
+    }
   } catch (zxing::IllegalArgumentException& e) {
     cell_result = "zxing::IllegalArgumentException: " + string(e.what());
     res = -3;
@@ -109,7 +118,8 @@ extern "C" char *decode_qr_image(const char *fname) {
   }
 
   if(res<0) {
-    cerr << cell_result << endl;
+    if(cell_result.length() > 0)
+      cerr << cell_result << endl;
     return(NULL);
   }
 

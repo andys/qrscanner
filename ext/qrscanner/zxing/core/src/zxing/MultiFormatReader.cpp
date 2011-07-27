@@ -93,7 +93,7 @@ namespace zxing {
         // continue
       }
     }
-    throw ReaderException("No code detected");
+    throw ReaderException("");
   }
   
   MultiFormatReader::~MultiFormatReader() {
